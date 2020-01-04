@@ -55,6 +55,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
 				actorList.add(new Actor(rs.getInt("actor.id"), rs.getString("first_name"), rs.getString("last_name")));
+				film.setLanguageList(findLanguageByFilmId(film.getId()));
+
 
 			}
 
@@ -122,6 +124,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
 				film.setActorList(findActorsByFilmId(film.getId()));
+				film.setLanguageList(findLanguageByFilmId(film.getId()));
 				filmList.add(film);
 
 			}

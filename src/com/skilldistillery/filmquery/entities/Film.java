@@ -110,7 +110,17 @@ public class Film {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
 				+ ", languageID=" + languageID + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
 				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
-				+ ", specialFeatures=" + specialFeatures + ",\n actorList=" + actorList + "]";
+				+ ", specialFeatures=" + specialFeatures + ",\n actorList=" + actorList + ",\n languageList=" + languageList
+				+ "]";
+	}
+	
+
+	public List<String> getLanguageList() {
+		return languageList;
+	}
+
+	public void setLanguageList(List<String> languageList) {
+		this.languageList = languageList;
 	}
 
 	public void setActorToList(Actor actor) {
