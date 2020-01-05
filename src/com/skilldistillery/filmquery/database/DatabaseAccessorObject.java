@@ -55,7 +55,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
 				actorList.add(new Actor(rs.getInt("actor.id"), rs.getString("first_name"), rs.getString("last_name")));
-				film.setLanguageList(findLanguageByFilmId(film.getId()));
+				film.setLanguageList(findLanguageById(film.getLanguageID()));
+				film.setActorList(findActorsByFilmId(film.getId()));
 
 
 			}
@@ -64,7 +65,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		film.setActorList(actorList);
+//		if(!actorList.isEmpty()) {
+//		film.setActorList(actorList);}
 		return film;
 	}
 
@@ -81,7 +83,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -124,7 +125,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
 						rs.getString("rating"), rs.getString("special_features"));
 				film.setActorList(findActorsByFilmId(film.getId()));
-				film.setLanguageList(findLanguageByFilmId(film.getId()));
+				film.setLanguageList(findLanguageById(film.getLanguageID()));
 				filmList.add(film);
 
 			}
@@ -135,10 +136,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return filmList;
 	}
-	public List<String> findLanguageByFilmId(int filmId){
+	public List<String> findLanguageById(int languageId){
 		List<String> languageList = new ArrayList<>();
-		int id = filmId;
-		String sqlTxt = "SELECT * FROM film JOIN language ON film.language_id = language.id WHERE film.id=?";
+		int id = languageId;
+		String sqlTxt = "SELECT * FROM language WHERE id=?";
 
 		Actor actor = null;
 		try (Connection conn = DriverManager.getConnection(URL, user, pass);

@@ -17,6 +17,7 @@ public class FilmQueryApp {
 		FilmQueryApp app = new FilmQueryApp();
 //    app.test();
 		app.launch();
+// made language a list to future proof in case films release with multiple languages
 	}
 
 	private void test() {
@@ -69,7 +70,9 @@ public class FilmQueryApp {
 				System.out.println("Select a film id!");
 				int filmId = input.nextInt();
 				Film film = db.findFilmById(filmId);
+				if(film != null) {
 				System.out.println(film);
+				}else System.out.println("No matches");
 				input.nextLine();
 				break;
 			} catch (InputMismatchException e) {
