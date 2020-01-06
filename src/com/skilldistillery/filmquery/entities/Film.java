@@ -110,7 +110,6 @@ public class Film {
 		return "Film title=" + title + ", description=" + description + ",\n releaseYear=" + releaseYear + ", rating="
 				+ rating + ", languageList=" + languageList + ",\n actorList=" + actorList;
 	}
-	
 
 	public List<String> getLanguageList() {
 		return languageList;

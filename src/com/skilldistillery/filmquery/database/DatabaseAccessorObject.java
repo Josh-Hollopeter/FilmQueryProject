@@ -58,15 +58,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setLanguageList(findLanguageById(film.getLanguageID()));
 				film.setActorList(findActorsByFilmId(film.getId()));
 
-
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		if(!actorList.isEmpty()) {
-//		film.setActorList(actorList);}
 		return film;
 	}
 
@@ -131,12 +127,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return filmList;
 	}
-	public List<String> findLanguageById(int languageId){
+
+	public List<String> findLanguageById(int languageId) {
 		List<String> languageList = new ArrayList<>();
 		int id = languageId;
 		String sqlTxt = "SELECT * FROM language WHERE id=?";
@@ -153,9 +149,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			e.printStackTrace();
 		}
 
-	
-		
-		return  languageList;
+		return languageList;
 	}
 
 }
